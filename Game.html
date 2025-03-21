@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Room - Descifra el Código</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <style>
+        body {
+            background: url('https://img.freepik.com/vector-gratis/fondo-luces-neon-formas-geometricas_23-2148437807.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-family: 'Press Start 2P', cursive;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            backdrop-filter: blur(5px);
+        }
+        .glitch {
+            font-size: 28px;
+            font-weight: bold;
+            animation: glitch 1s infinite alternate;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 4px 4px red, -4px -4px cyan; }
+            50% { text-shadow: -4px -4px lime, 4px 4px yellow; }
+            100% { text-shadow: 4px 4px red, -4px -4px cyan; }
+        }
+        .instructions {
+            margin: 20px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+        }
+        .input-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .code-input {
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            text-align: center;
+            border: 3px solid cyan;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            background: cyan;
+            border: none;
+            cursor: pointer;
+        }
+        .hint {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: lime;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="glitch">¡¡DESCIFRA EL CODIGO VIAJERO!!</div>
+        <div class="instructions">
+            <p>Debes ingresar un código de tres números. Usa las pistas para encontrar la combinación correcta.</p>
+        </div>
+        <div class="hint">
+            <p>🔎 Pistas:</p>
+            <p>1️⃣ El primer número es un múltiplo de 5 y está entre 1 y 10.</p>
+            <p>2️⃣ El segundo número es menor que 3+1 pero mayor que 1+1.</p>
+            <p>3️⃣ El último número es el doble de 3 más 1.</p>
+        </div>
+        <div class="input-container">
+            <input type="text" class="code-input" id="digit1" maxlength="1">
+            <input type="text" class="code-input" id="digit2" maxlength="1">
+            <input type="text" class="code-input" id="digit3" maxlength="1">
+            <button class="submit-btn" onclick="checkCode()">✔</button>
+        </div>
+        <div class="message" id="successMessage">¡Felicidades! Has encontrado el código secreto: 5</div>
+    </div>
+    <script>
+        function checkCode() {
+            let digit1 = document.getElementById("digit1").value;
+            let digit2 = document.getElementById("digit2").value;
+            let digit3 = document.getElementById("digit3").value;
+            let message = document.getElementById("successMessage");
+            
+            if (digit1 === "5" && digit2 === "2" && digit3 === "7") {
+                message.style.display = "block";
+            } else {
+                alert("Código incorrecto, inténtalo de nuevo.");
+            }
+        }
+    </script>
+</body>
+</html>
+
